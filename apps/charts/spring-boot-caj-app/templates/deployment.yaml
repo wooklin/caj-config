@@ -28,13 +28,13 @@ spec:
         - name: "{{ template "spring-boot-caj-app.fullname" . }}"
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.deployment.env }}
-          env:      
-          {{- range $name, $value := .Values.deployment.env }}
-          - name: {{ $name }}
-            value: {{ $value }}
-          {{- end }}
-          {{- end }}
+          env:
+          - name: MASTER_FILE_URI	
+            value: 'http://caj-master-file:8080'	
+          - name: FARE_URI	
+            value: 'http://caj-fare:8080'	
+          - name: SCHEDULE_URI	
+            value: 'http://caj-schedule:8080'
           ports:
           - containerPort: 8080
             protocol: TCP
