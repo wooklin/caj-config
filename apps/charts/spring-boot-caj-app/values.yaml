@@ -5,7 +5,13 @@ version: v1
 studenID: ""
 
 deployment:
-  env: []
+  env: 
+  - name: MASTER_FILE_URI	
+    value: 'http://caj-master-file:8080'	
+  - name: FARE_URI	
+    value: 'http://caj-fare:8080'	
+  - name: SCHEDULE_URI	
+    value: 'http://caj-schedule:8080'
   replicas: 1
 
 image:
